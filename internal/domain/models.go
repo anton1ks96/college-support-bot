@@ -2,10 +2,16 @@ package domain
 
 import "time"
 
-type Message struct {
-	ID        int64
-	UserID    int64
-	Text      string
-	PhotoURLs []string
-	CreatedAt time.Time
+const (
+	StateNone = iota
+	StateAwaitingProblemReport
+	StateAwaitingSuggestion
+)
+
+type UserState struct {
+	State      int
+	Text       string
+	Photos     []interface{}
+	PhotoCount int
+	CreatedAt  time.Time
 }
